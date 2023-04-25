@@ -1,19 +1,43 @@
 ---
-title: "page-template"
-author: "me"
+title: "Example Quarto Page"
+author: "Conley Kinkead"
+date: 2023-04-25
+theme: quartz
+title-block-banner: true
+license: MIT
+citation: true
 ---
 
-## Quarto
+# Here is my page
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+## Installing packages 
 
 ```{r}
-1 + 1
+#| eval: false
+
+install.packages("tidyverse")
+install.packages("palmerpenguins")
 ```
 
+## Load the libraries
+
 ```{r}
-plot(
- rnorm(20),
- rnorm(20)
-)
+#| message: false
+
+library(tidyverse)
+library(palmerpenguins)
+```
+
+## Here's a plot
+
+```{r}
+#| label: fig-penguin
+#| warning: false
+#| fig-cap: "Penguin plot"
+
+penguins |>
+  ggplot(aes(bill_length_mm, bill_depth_mm, color = species))+
+  geom_point()+
+  scale_color_brewer(palette = "Dark2")+
+  theme_classic()
 ```
